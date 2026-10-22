@@ -78,7 +78,7 @@ async function getPersonById(req, res, next) {
 async function updatePersonById(req, res, next) {
   try {
     const person_id = req.params.id;
-    req.body.id = person_id;
+    req.body.person_id = person_id;
     const { error, value } = team_trackerSchema.validate(req.body);
 
     if (error) {
@@ -100,7 +100,7 @@ async function updatePersonById(req, res, next) {
     const Team = result.Item;
 
     if (!Team) {
-      return res.status(404).json({ message: "No team found" });
+      return res.status(404).json({ message: "No person found" });
     }
 
     // Update the team in DynamoDB
